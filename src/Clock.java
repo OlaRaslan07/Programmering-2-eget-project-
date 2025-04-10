@@ -50,6 +50,7 @@ public class Clock {
 
                     break;
 
+<<<<<<< Updated upstream
                 case 2:
                     upgrades.purchaseAccessory();
                     break;
@@ -60,6 +61,19 @@ public class Clock {
                     break;
 
                 default:
+=======
+
+                case 2:
+                    upgrades.purchaseAccessory();
+                    break;
+
+                case 3:
+                    Running = false;
+                    System.out.println("Tack för att du spelade!");
+                    break;
+
+                default: 
+>>>>>>> Stashed changes
                     System.out.println("Ogiltigt val, försök igen.");
             }
         }
