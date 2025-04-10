@@ -44,11 +44,12 @@ public class Clock {
                         }
                     }
 
-                    myCharacter.earnCoinsFromStudy(minutes); 
+                    myCharacter.earnCoinsFromStudy(minutes);
                     System.out.println("\nDin plugg session är klar!"); // Meddelar att plugg-sessionen är klar
                     System.out.println(myCharacter); // Skriver ut karaktärens status
 
                     break; // Avslutar switch-satsen för alternativ 1
+                // riktigt onödig kommentar
 
                 case 2: // Om användaren väljer 2
                     upgrades.purchaseAccessory(); // Anropar metoden för att köpa accessoarer
