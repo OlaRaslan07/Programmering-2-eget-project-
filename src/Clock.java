@@ -45,23 +45,22 @@ public class Clock {
                     }
 
                     myCharacter.earnCoinsFromStudy(minutes);
-                    System.out.println("\nDin plugg session är klar!"); // Meddelar att plugg-sessionen är klar
-                    System.out.println(myCharacter); // Skriver ut karaktärens status
+                    System.out.println("\nDin plugg session är klar!");
+                    System.out.println(myCharacter);
 
-                    break; // Avslutar switch-satsen för alternativ 1
-                // riktigt onödig kommentar
+                    break;
 
-                case 2: // Om användaren väljer 2
-                    upgrades.purchaseAccessory(); // Anropar metoden för att köpa accessoarer
-                    break; // Avslutar switch-satsen för alternativ 2
+                case 2:
+                    upgrades.purchaseAccessory();
+                    break;
 
-                case 3: // Om användaren väljer 3
-                    Running = false; // Sätter 'Running' till false för att avsluta programmet
-                    System.out.println("Tack för att du spelade!"); // Skriver ut ett tackmeddelande
-                    break; // Avslutar switch-satsen för alternativ 3
+                case 3:
+                    Running = false;
+                    System.out.println("Tack för att du spelade!");
+                    break;
 
-                default: // Om användaren anger ett ogiltigt val
-                    System.out.println("Ogiltigt val, försök igen."); // Meddelar användaren att valet är ogiltigt
+                default:
+                    System.out.println("Ogiltigt val, försök igen.");
             }
         }
     }
