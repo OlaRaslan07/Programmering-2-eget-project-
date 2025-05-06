@@ -47,6 +47,6 @@ public class Character {
 
     @Override
     public String toString() {
-        return "Karaktär: " + name + ", Coins: " + coins + ", Accessoarer: " + accessories; 
+        return "Karaktär: " + name + ", Coins: " + coins + ", Accessoarer: " + accessories;
     }
 }
