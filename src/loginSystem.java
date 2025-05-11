@@ -8,6 +8,7 @@ public class loginSystem {
     HashMap<String, String> users = new HashMap<>();
     Scanner scanner = new Scanner(System.in);
 
+    //hdiuwefhwiufhwiufhwefu
     // Konstruktor för loginSystem
     public String loginOrRegister() {
         while (true) {
