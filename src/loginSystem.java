@@ -1,7 +1,7 @@
-// Det är ett bibliotek som låter dig spara och hämta data med hjälp av ett namn
 import java.util.HashMap;
 import java.util.Scanner;
 
+// Det är ett bibliotek som låter dig spara och hämta data med hjälp av ett namn
 public class loginSystem {
 
     // Skapar en HashMap som sparar text–text-par (t.ex. namn → lösenord).
@@ -50,3 +50,4 @@ public class loginSystem {
         }
     }
 }
+

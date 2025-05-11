@@ -11,8 +11,9 @@ public class Clock {
     public Clock(Character myCharacter, Upgrades upgrades) {
         answer = new Scanner(System.in);
 
-        this.myCharacter = new Character(name);
-        this.upgrades = new Upgrades(this.myCharacter);
+        // Använder den överförda karaktären och uppgraderingarna
+        this.myCharacter = myCharacter;
+        this.upgrades = upgrades;
     }
 
     // Startar programmet
@@ -44,6 +45,7 @@ public class Clock {
 
                 case 3:
                     running = false;
+
                     System.out.println("Tack för att du spelade!");
                     break;
 

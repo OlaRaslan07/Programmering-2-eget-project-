@@ -45,17 +45,17 @@ public class Upgrades {
 
 
                 case 1:
-                    buyAccessory("Hatt", 30);
+                    buyAccessory("Hatt", 1);
                     break;
 
 
                 case 2:
-                    buyAccessory("Skor", 50);
+                    buyAccessory("Skor", 2);
                     break;
 
 
                 case 3:
-                    buyAccessory("Kostym", 100);
+                    buyAccessory("Kostym", 3);
                     break;
 
 
