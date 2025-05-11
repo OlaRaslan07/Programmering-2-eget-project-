@@ -1,13 +1,12 @@
 import java.io.*;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class DataBase {
 
-    private static final String DATA_FILE = "user_data.dat";
+    public static final String DATA_FILE = "user_data.dat";
 
     // Stored as username -> UserData object
-    private Map<String, UserData> usersData;
+    Map<String, UserData> usersData;
 
     public DataBase() {
         usersData = new HashMap<>();
@@ -16,24 +15,26 @@ public class DataBase {
 
     // Inner class to hold user data
     public static class UserData implements Serializable {
-        private static final long serialVersionUID = 1L;
+        public static final long serialVersionUID = 1L;
 
         public String username;
         public String characterName;
         public int coins;
         public String password;
+        public List<String> accessories;
 
         public UserData(String username, String password, String characterName, int coins) {
             this.username = username;
             this.password = password;
             this.characterName = characterName;
             this.coins = coins;
+            this.accessories = new ArrayList<>();
         }
     }
 
     // Load data from file
     @SuppressWarnings("unchecked")
-    private void loadData() {
+    public void loadData() {
         File file = new File(DATA_FILE);
         if (!file.exists()) {
             return; // No data yet
@@ -49,7 +50,7 @@ public class DataBase {
     }
 
     // Save data to file
-    private void saveData() {
+    public void saveData() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE))) {
             oos.writeObject(usersData);
         } catch (IOException e) {
@@ -76,7 +77,7 @@ public class DataBase {
         return null;
     }
 
-    // Update user data e.g. coins, character name
+    // Update user data e.g. coins, character name, accessories
     public void updateUserData(UserData userData) {
         usersData.put(userData.username, userData);
         saveData();

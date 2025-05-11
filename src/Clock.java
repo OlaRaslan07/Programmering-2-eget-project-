@@ -3,20 +3,15 @@ import java.util.concurrent.TimeUnit;
 
 public class Clock {
     public Scanner answer;
-    public String name;
     public Character myCharacter;
     public Upgrades upgrades;
 
-    // Konstruktor
     public Clock(Character myCharacter, Upgrades upgrades) {
-        answer = new Scanner(System.in);
-
-        // Använder den överförda karaktären och uppgraderingarna
+        this.answer = new Scanner(System.in);
         this.myCharacter = myCharacter;
         this.upgrades = upgrades;
     }
 
-    // Startar programmet
     public void start() {
         boolean running = true;
 
@@ -38,25 +33,20 @@ public class Clock {
                     System.out.println("\nDin plugg session är klar!");
                     System.out.println(myCharacter);
                     break;
-
                 case 2:
                     upgrades.purchaseAccessory();
                     break;
-
                 case 3:
                     running = false;
-
                     System.out.println("Tack för att du spelade!");
                     break;
-
                 default:
                     System.out.println("Ogiltigt val, försök igen.");
             }
         }
     }
 
-    // Timerfunktion för plugg
-    private void startStudyTimer(int minutes) {
+    public void startStudyTimer(int minutes) {
         int totalSeconds = minutes * 60;
 
         for (int i = totalSeconds; i >= 0; i--) {

@@ -1,7 +1,8 @@
 import java.util.Scanner;
 
 public class Connect {
-
+    public DataBase dataBase;
+    public DataBase.UserData userData;
     public Character myCharacter;
     public Upgrades upgrades;
     public Player player;
@@ -10,26 +11,28 @@ public class Connect {
 
     public Connect() {
         scanner = new Scanner(System.in);
+        dataBase = new DataBase();
 
         // Använd inloggningssystemet
         loginSystem login = new loginSystem();
-        String loggedInUsername = login.loginOrRegister(); // Få det inloggade användarnamnet
+        String loggedInUsername = login.loginOrRegister();
 
-        // Skapa karaktär baserat på det inloggade användarnamnet
-        System.out.print("\nHej " + loggedInUsername + "!");
+        userData = dataBase.usersData.get(loggedInUsername);
 
-        System.out.println("Vad ska din karaktär heta?: ");
-        String characterName = scanner.nextLine();
+        if (userData != null) {
+            System.out.println("\nHej " + userData.username + "!");
+            myCharacter = new Character(userData, dataBase);
+            upgrades = new Upgrades(myCharacter);
+            player = new Player(userData);
+            clock = new Clock(myCharacter, upgrades);
 
-        myCharacter = new Character(characterName);
-        upgrades = new Upgrades(myCharacter);
-        player = new Player(characterName);
-        clock = new Clock(myCharacter, upgrades);
-
-        System.out.println("Karaktär skapad: " + myCharacter.getName());
+            System.out.println("Karaktär skapad: " + myCharacter.getName());
+        } else {
+            System.out.println("Ingen användardata hittades för användarnamnet: " + loggedInUsername);
+        }
     }
 
     public void startGame() {
-        clock.start(); // Starta spelet
+        clock.start();
     }
 }

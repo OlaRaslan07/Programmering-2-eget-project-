@@ -1,15 +1,14 @@
-import java.util.HashMap;
 import java.util.Scanner;
 
-// Det är ett bibliotek som låter dig spara och hämta data med hjälp av ett namn
 public class loginSystem {
+    public DataBase dataBase;
+    public Scanner scanner;
 
-    // Skapar en HashMap som sparar text–text-par (t.ex. namn → lösenord).
-    HashMap<String, String> users = new HashMap<>();
-    Scanner scanner = new Scanner(System.in);
+    public loginSystem() {
+        dataBase = new DataBase();
+        scanner = new Scanner(System.in);
+    }
 
-    //hdiuwefhwiufhwiufhwefu
-    // Konstruktor för loginSystem
     public String loginOrRegister() {
         while (true) {
             System.out.println("Välkommen! Vänligen välj ett alternativ:");
@@ -20,28 +19,28 @@ public class loginSystem {
             scanner.nextLine(); // Rensa bufferten
 
             if (choice == 1) {
-                // Registrering
                 System.out.print("Ange användarnamn: ");
                 String username = scanner.nextLine();
                 System.out.print("Ange lösenord: ");
                 String password = scanner.nextLine();
+                System.out.print("Ange karaktärens namn: ");
+                String characterName = scanner.nextLine();
 
-                if (users.containsKey(username)) {
-                    System.out.println("Användarnamnet finns redan. Försök igen.");
-                } else {
-                    users.put(username, password); // Lägger till användaren
+                if (dataBase.registerUser(username, password, characterName)) {
                     System.out.println("Registrering lyckades!");
+                } else {
+                    System.out.println("Användarnamnet finns redan. Försök igen.");
                 }
             } else if (choice == 2) {
-                // Inloggning
                 System.out.print("Ange användarnamn: ");
                 String username = scanner.nextLine();
                 System.out.print("Ange lösenord: ");
                 String password = scanner.nextLine();
 
-                if (users.containsKey(username) && users.get(username).equals(password)) {
-                    System.out.println("Inloggning lyckades! Välkommen, " + username + "!");
-                    return username; // Returnera användarnamnet när inloggning lyckas
+                DataBase.UserData userData = dataBase.validateUser(username, password);
+                if (userData != null) {
+                    System.out.println("Inloggning lyckades! Välkommen, " + userData.characterName + "!");
+                    return userData.username;
                 } else {
                     System.out.println("Fel användarnamn eller lösenord. Försök igen.");
                 }
@@ -51,4 +50,3 @@ public class loginSystem {
         }
     }
 }
-
