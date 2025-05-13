@@ -5,7 +5,6 @@ public class DataBase {
 
     public static final String DATA_FILE = "user_data.dat";
 
-    // Stored as username -> UserData object
     Map<String, UserData> usersData;
 
     public DataBase() {
@@ -13,7 +12,6 @@ public class DataBase {
         loadData();
     }
 
-    // Inner class to hold user data
     public static class UserData implements Serializable {
         public static final long serialVersionUID = 1L;
 
@@ -32,7 +30,6 @@ public class DataBase {
         }
     }
 
-    // Load data from file
     @SuppressWarnings("unchecked")
     public void loadData() {
         File file = new File(DATA_FILE);
@@ -49,7 +46,6 @@ public class DataBase {
         }
     }
 
-    // Save data to file
     public void saveData() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE))) {
             oos.writeObject(usersData);
@@ -58,7 +54,7 @@ public class DataBase {
         }
     }
 
-    // Register new user data
+
     public boolean registerUser(String username, String password, String characterName) {
         if (usersData.containsKey(username)) {
             return false; // Already exists
@@ -68,7 +64,6 @@ public class DataBase {
         return true;
     }
 
-    // Validate user credentials and return user data or null if invalid
     public UserData validateUser(String username, String password) {
         UserData data = usersData.get(username);
         if (data != null && data.password.equals(password)) {
@@ -77,7 +72,7 @@ public class DataBase {
         return null;
     }
 
-    // Update user data e.g. coins, character name, accessories
+
     public void updateUserData(UserData userData) {
         usersData.put(userData.username, userData);
         saveData();

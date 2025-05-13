@@ -14,7 +14,6 @@ public class Connect {
 
         // Använd inloggningssystemet
         loginSystem login = new loginSystem();
-        //den pekar endast databasen
         this.dataBase = login.dataBase;
         String loggedInUsername = login.loginOrRegister();
 
