@@ -28,6 +28,7 @@ public class loginSystem {
 
                 if (dataBase.registerUser(username, password, characterName)) {
                     System.out.println("Registrering lyckades!");
+                    return username;
                 } else {
                     System.out.println("Användarnamnet finns redan. Försök igen.");
                 }

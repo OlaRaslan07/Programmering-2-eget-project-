@@ -11,10 +11,11 @@ public class Connect {
 
     public Connect() {
         scanner = new Scanner(System.in);
-        dataBase = new DataBase();
 
         // Använd inloggningssystemet
         loginSystem login = new loginSystem();
+        //den pekar endast databasen
+        this.dataBase = login.dataBase;
         String loggedInUsername = login.loginOrRegister();
 
         userData = dataBase.usersData.get(loggedInUsername);
