@@ -16,7 +16,7 @@ public class loginSystem {
             System.out.println("2. Logga in");
 
             int choice = scanner.nextInt();
-            scanner.nextLine(); // Rensa bufferten
+            scanner.nextLine();
 
             if (choice == 1) {
                 System.out.print("Ange användarnamn: ");
@@ -26,7 +26,7 @@ public class loginSystem {
                 System.out.print("Ange karaktärens namn: ");
                 String characterName = scanner.nextLine();
 
-                if (dataBase.registerUser(username, password, characterName)) {
+                if (dataBase.registerUser (username, password, characterName)) {
                     System.out.println("Registrering lyckades!");
                     return username;
                 } else {
@@ -38,9 +38,10 @@ public class loginSystem {
                 System.out.print("Ange lösenord: ");
                 String password = scanner.nextLine();
 
-                DataBase.UserData userData = dataBase.validateUser(username, password);
+                DataBase.UserData userData = dataBase.validateUser (username, password);
                 if (userData != null) {
                     System.out.println("Inloggning lyckades! Välkommen, " + userData.characterName + "!");
+                    System.out.println("Antal coins: " + userData.coins + " coins");
                     return userData.username;
                 } else {
                     System.out.println("Fel användarnamn eller lösenord. Försök igen.");
@@ -51,3 +52,4 @@ public class loginSystem {
         }
     }
 }
+

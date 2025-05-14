@@ -21,7 +21,6 @@ public class Character {
         return userData.accessories;
     }
 
-    // Metod för att lägga till coins
     public void addCoins(int amount) {
         userData.coins += amount;
         dataBase.updateUserData(userData);
