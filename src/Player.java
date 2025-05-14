@@ -8,17 +8,5 @@ public class Player {
         this.studyhours = 0;
         this.coins = userData.coins;
     }
-
-    public void registerStudyhours(int hours) {
-        this.studyhours += hours;
-        this.coins += hours * 10; // 10 coins per timme
-    }
-
-    public int getCoins() {
-        return coins;
-    }
-
-    public String getName() {
-        return name;
-    }
+    
 }
