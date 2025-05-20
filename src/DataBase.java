@@ -29,42 +29,50 @@ public class DataBase {
             this.accessories = new ArrayList<>();
         }
     }
-
     @SuppressWarnings("unchecked")
     public void loadData() {
         File file = new File(DATA_FILE);
+
         if (!file.exists()) {
-            return; // No data yet
+            return;
         }
+
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file))) {
+
+
             Object obj = ois.readObject();
+
             if (obj instanceof Map) {
                 usersData = (Map<String, UserData>) obj;
             }
         } catch (IOException | ClassNotFoundException e) {
+
             System.out.println("Failed to load user data: " + e.getMessage());
         }
     }
 
     public void saveData() {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(DATA_FILE))) {
+
             oos.writeObject(usersData);
         } catch (IOException e) {
             System.out.println("Failed to save user data: " + e.getMessage());
         }
     }
 
-
     public boolean registerUser(String username, String password, String characterName) {
+
         if (usersData.containsKey(username)) {
-            return false; // Already exists
+            return false;
         }
+
         usersData.put(username, new UserData(username, password, characterName, 0));
         saveData();
         return true;
     }
 
     public UserData validateUser(String username, String password) {
+
         UserData data = usersData.get(username);
         if (data != null && data.password.equals(password)) {
             return data;
@@ -72,8 +80,8 @@ public class DataBase {
         return null;
     }
 
-
     public void updateUserData(UserData userData) {
+
         usersData.put(userData.username, userData);
         saveData();
     }

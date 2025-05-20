@@ -1,3 +1,4 @@
+
 public class Player {
     public String name;
     public int studyhours;
@@ -8,5 +9,4 @@ public class Player {
         this.studyhours = 0;
         this.coins = userData.coins;
     }
-    
 }

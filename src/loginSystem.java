@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class loginSystem {
@@ -11,7 +12,7 @@ public class loginSystem {
 
     public String loginOrRegister() {
         while (true) {
-            System.out.println("Välkommen! Vänligen välj ett alternativ:");
+            System.out.println("Vänligen välj ett alternativ:");
             System.out.println("1. Registrera dig");
             System.out.println("2. Logga in");
 
@@ -26,7 +27,7 @@ public class loginSystem {
                 System.out.print("Ange karaktärens namn: ");
                 String characterName = scanner.nextLine();
 
-                if (dataBase.registerUser (username, password, characterName)) {
+                if (dataBase.registerUser(username, password, characterName)) {
                     System.out.println("Registrering lyckades!");
                     return username;
                 } else {
@@ -38,7 +39,7 @@ public class loginSystem {
                 System.out.print("Ange lösenord: ");
                 String password = scanner.nextLine();
 
-                DataBase.UserData userData = dataBase.validateUser (username, password);
+                DataBase.UserData userData = dataBase.validateUser(username, password);
                 if (userData != null) {
                     System.out.println("Inloggning lyckades! Välkommen, " + userData.characterName + "!");
                     System.out.println("Antal coins: " + userData.coins + " coins");
@@ -51,5 +52,7 @@ public class loginSystem {
             }
         }
     }
+
 }
+
 

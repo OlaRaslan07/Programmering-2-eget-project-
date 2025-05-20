@@ -8,19 +8,29 @@ public class Connect {
     public Player player;
     public Clock clock;
     public Scanner scanner;
+    public QuoteAPI quoteAPI;
 
     public Connect() {
         scanner = new Scanner(System.in);
+        quoteAPI = new QuoteAPI();
 
         // Använd inloggningssystemet
         loginSystem login = new loginSystem();
-        this.dataBase = login.dataBase;
         String loggedInUsername = login.loginOrRegister();
 
+        // Use the same database instance from loginSystem
+        this.dataBase = login.dataBase;
         userData = dataBase.usersData.get(loggedInUsername);
 
         if (userData != null) {
             System.out.println("\nHej " + userData.username + "!");
+
+            // Display an inspirational quote after successful login
+            String inspirationalQuote = quoteAPI.getRandomQuote();
+            System.out.println("\n✨ Dagens inspiration ✨");
+            System.out.println(inspirationalQuote);
+            System.out.println("-----------------------------------");
+
             myCharacter = new Character(userData, dataBase);
             upgrades = new Upgrades(myCharacter);
             player = new Player(userData);
